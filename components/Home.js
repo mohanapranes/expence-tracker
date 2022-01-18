@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Text, TouchableOpacity, View } from 'react-native'
 import tw from 'tailwind-react-native-classnames'
 import Handler from './Handler'
+import { useSelector } from 'react-redux'
 
 export default function Home({navigation}) {
     return (
