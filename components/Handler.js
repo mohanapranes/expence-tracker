@@ -9,13 +9,14 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 
-export default function Handler(navigation) {
+export default function Handler({navigation,route}) {
     const [number, setNumber] = useState(null)
     const [remarks, setRemarks] = useState("")
     const [date, setdate] = useState(new Date())
-    const operator = navigation.route.params
-    
+    const {operator} = route.params
     const dispatch = useDispatch()
+    const balance = useSelector((state)=> state.counter.amount)
+    //console.log("balance:",balance)
     const submit = (Amount,remarks,date) =>{ 
     if(operator==='+'){
         var obj = {
@@ -23,7 +24,8 @@ export default function Handler(navigation) {
             'remarks':remarks,
             'date':date,
             'operator':operator,
-            'Details':'Cash IN'
+            'Details':'Cash IN',
+            'Balance' : balance+Amount,
         }
     }
     else {
@@ -33,11 +35,13 @@ export default function Handler(navigation) {
             'date':date,
             'operator':operator,
             'Details':'Cash Out',
+            'Balance' : balance-Amount,
         }
     }
     dispatch(addAmount(obj))
     setNumber(null)
     setRemarks("")
+    navigation.navigate('cash book')
 }
     return (
        <View style={tw`bg-white p-3`}>
@@ -70,7 +74,7 @@ export default function Handler(navigation) {
                     <CalendarPicker onDateChange={setdate}/>
                 </View>
                 <View style={tw`p-3`}>
-                        <Button title='Submit' onPress={()=>submit(number,remarks,date)}/>
+                        <Button title='Submit' onPress={()=>submit(number,remarks,date) } />
                 </View>
             </ScrollView>
             {//console.log(value)

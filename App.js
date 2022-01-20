@@ -7,12 +7,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from "react-redux";
 import store from './components/Data/store';
+import Details from './components/details';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer >
         <Stack.Navigator initialRouteName='Home'>
           <Stack.Screen name='cash book' component={Home} options={{
             title: 'Cash Book',
@@ -24,6 +25,7 @@ export default function App() {
           <Stack.Screen name='Cash in/out' component={Handler} />
         </Stack.Navigator>
       </NavigationContainer>
+      
     </Provider>
   );
 }

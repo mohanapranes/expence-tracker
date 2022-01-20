@@ -10,7 +10,6 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     addAmount: (state, action) => {
-      //state.value += parseInt( action.payload)
       state.arr.push(action.payload)
       if(state.arr[state.arr.length-1].operator=='+'){
         state.amount += parseInt(state.arr[state.arr.length-1].Amount)
@@ -18,7 +17,7 @@ export const counterSlice = createSlice({
       else{
         state.amount -= parseInt(state.arr[state.arr.length-1].Amount)
       }
-      console.log(state.amount)
+     // console.log(state.amount)
     },
   },
 })
