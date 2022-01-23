@@ -1,13 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-
+import { useSelector } from 'react-redux';
 export default function DetailsCard({Amount,remarks,date,Details,Balance}) {
     const Date = JSON.stringify(date)
-   // console.log(Details)
   return (
       <View style={tw`p-1 shadow`}>
-          <View style={tw`p-1 border rounded-md`}>
+          <View style={tw`p-1 border rounded-md bg-white`}>
              <View style={tw`flex flex-row`}>
                   <View style={tw`w-40`}>
                       <Text style={tw`font-thin opacity-50`}>
@@ -15,9 +14,15 @@ export default function DetailsCard({Amount,remarks,date,Details,Balance}) {
                       </Text>
                   </View>
                   <View>
-                      <Text style={tw`italic opacity-50`}>
+                      {Details=='Cash IN'?
+                      <Text style={tw`italic opacity-50 text-green-800`}>                          
+                          { Details}
+                      </Text>
+                      :
+                      <Text style={tw`italic opacity-50 text-red-800`}>
                           {Details}
                       </Text>
+}
                   </View>
              </View>
             <View style={tw`flex flex-row`}>

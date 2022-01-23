@@ -12,12 +12,13 @@ export const counterSlice = createSlice({
     addAmount: (state, action) => {
       state.arr.push(action.payload)
       if(state.arr[state.arr.length-1].operator=='+'){
-        state.amount += parseInt(state.arr[state.arr.length-1].Amount)
+        console.log("yes", typeof state.amount)
+        state.amount = parseInt(state.amount) + parseInt(state.arr[state.arr.length-1].Amount)
       }
       else{
         state.amount -= parseInt(state.arr[state.arr.length-1].Amount)
       }
-     // console.log(state.amount)
+      //console.log(typeof state.amount)
     },
   },
 })

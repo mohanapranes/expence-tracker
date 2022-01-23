@@ -18,6 +18,7 @@ export default function Handler({navigation,route}) {
     const balance = useSelector((state)=> state.counter.amount)
     //console.log("balance:",balance)
     const submit = (Amount,remarks,date) =>{ 
+        Amount = parseInt(Amount)
     if(operator==='+'){
         var obj = {
             'Amount':Amount,

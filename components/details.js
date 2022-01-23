@@ -1,5 +1,5 @@
 import React from 'react';
-import { View,Text } from 'react-native';
+import { View,Text, ScrollView } from 'react-native';
 import { useSelector } from 'react-redux';
 import DetailsCard from './DetailsCard';
 
@@ -8,11 +8,7 @@ export default function Details() {
     //console.log(detail.length)
     return (
       <View>
-          <View>
-              <Text>{//detail[0].Details
-              }
-              </Text>
-          </View>
+          <ScrollView>
           {detail.map(({Amount,remarks,date,Details,Balance},id)=>(
               <DetailsCard 
               key = {id}
@@ -24,6 +20,7 @@ export default function Details() {
               />
               //console.log(date)
           ))}
+        </ScrollView>
       </View>
   );
 }
