@@ -17,10 +17,12 @@ export default function Handler({navigation,route}) {
     const dispatch = useDispatch()
     const balance = useSelector((state)=> state.counter.amount)
     //console.log("balance:",balance)
+    let key = 0
     const submit = (Amount,remarks,date) =>{ 
         Amount = parseInt(Amount)
     if(operator==='+'){
         var obj = {
+            'key':key++,
             'Amount':Amount,
             'remarks':remarks,
             'date':date,
@@ -31,6 +33,7 @@ export default function Handler({navigation,route}) {
     }
     else {
         var obj = {
+            'key':key++,
             'Amount':Amount,
             'remarks':remarks,
             'date':date,

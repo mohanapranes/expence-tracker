@@ -9,16 +9,17 @@ export default function Details() {
     return (
       <View>
           <ScrollView>
-          {detail.map(({Amount,remarks,date,Details,Balance},id)=>(
+          {detail.map(({key,Amount,remarks,date,Details,Balance},id)=>(
               <DetailsCard 
               key = {id}
+              ind = {key}
               Amount={Amount}
               remarks={remarks}
               date = {date}
               Details = {Details}
               Balance = {Balance}
               />
-              //console.log(date)
+            //  console.log("yeuo",Balance)
           ))}
         </ScrollView>
       </View>

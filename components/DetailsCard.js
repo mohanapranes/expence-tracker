@@ -1,12 +1,36 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View,Alert } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import { useSelector } from 'react-redux';
-export default function DetailsCard({Amount,remarks,date,Details,Balance}) {
+import { useSelector,useDispatch } from 'react-redux';
+import { deleteArr } from './Data/data';
+
+export default function DetailsCard({ind,Amount,remarks,date,Details,Balance}) {
     const Date = JSON.stringify(date)
-  return (
+    const dispatch = useDispatch()
+   // console.log('ind',Balance)
+    function deleteVal(index) {
+        //console.log('inf',index)
+        dispatch(deleteArr(index))
+
+    }
+
+    function setAlert() {
+        Alert.alert(
+        "Delete",
+        "Do you want to delete this record",
+        [
+        {
+          text: "Yes",
+          onPress: () => deleteVal(ind),
+          //style: "cancel"
+        },
+        { text: "No"  }
+      ]
+    );
+    }
+    return (
       <View style={tw`p-1 shadow`}>
-          <View style={tw`p-1 border rounded-md bg-white`}>
+          <TouchableOpacity   onLongPress={()=>setAlert()} style={tw`p-1 border rounded-md bg-white`}>
              <View style={tw`flex flex-row`}>
                   <View style={tw`w-40`}>
                       <Text style={tw`font-thin opacity-50`}>
@@ -37,7 +61,7 @@ export default function DetailsCard({Amount,remarks,date,Details,Balance}) {
                     <Text style={tw`font-bold`}>{Balance}</Text>
                 </View>
             </View>
-          </View>
+          </TouchableOpacity>
       </View>
   );
 }
