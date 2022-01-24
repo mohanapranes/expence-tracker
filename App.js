@@ -13,6 +13,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <Provider store={store}>
+
       <NavigationContainer >
         <Stack.Navigator initialRouteName='Home'>
           <Stack.Screen name='cash book' component={Home} options={{
@@ -25,7 +26,7 @@ export default function App() {
           <Stack.Screen name='Cash in/out' component={Handler} />
         </Stack.Navigator>
       </NavigationContainer>
-      
+  
     </Provider>
   );
 }
